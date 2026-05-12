@@ -1,3 +1,16 @@
+/*
+File: lotek-database-schema-visualizer.css
+Description: Visual layout, dark UI styling, table rendering, connector colors, and responsive styles.
+Author: Stephan Kühn (LoTeK)
+Mail: info@lotek-zone.com
+Web: https://lotek-zone.com/
+GitHub: https://github.com/LoTeK-Zone
+Repository: https://github.com/LoTeK-Zone/LoTeK-Database-Schema-Visualizer
+Version: v0.2.1
+Last Updated: 2026-05-12
+License: MIT
+*/
+
 :root {
    --bg: #11151b;
    --panel: rgba(27, 33, 42, 0.96);

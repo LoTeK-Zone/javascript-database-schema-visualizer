@@ -1,3 +1,16 @@
+/*
+File: lotek-database-schema-visualizer.js
+Description: Parser, renderer, SQL generator, connector logic, and layout handling for the visualizer.
+Author: Stephan Kühn (LoTeK)
+Mail: info@lotek-zone.com
+Web: https://lotek-zone.com/
+GitHub: https://github.com/LoTeK-Zone
+Repository: https://github.com/LoTeK-Zone/LoTeK-Database-Schema-Visualizer
+Version: v0.2.1
+Last Updated: 2026-05-12
+License: MIT
+*/
+
 (() => {
    const STORAGE_KEY = 'lotek-database-schema-visualizer-layout-v020'
    const SIDEBAR_WIDTH_KEY = 'lotek-database-schema-visualizer-sidebar-width-v020'

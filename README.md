@@ -65,12 +65,6 @@ No external libraries are required.
 Open:
 
 ```text
-index.html
-```
-
-or:
-
-```text
 LoTeK-Database-Schema-Visualizer.html
 ```
 

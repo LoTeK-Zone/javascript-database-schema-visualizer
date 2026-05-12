@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LoTeK Database Schema Visualizer v0.2.1</title>
+<link rel="stylesheet" href="css/lotek-database-schema-visualizer.css">
+</head>
+<body>
+<div class="app">
+   <aside class="sidebar">
+      <div class="header">
+         <div class="title">LoTeK Database Schema Visualizer v0.2.1</div>
+         <div class="subtitle">Live INI schema editor with visual links and read-only SQL output.</div>
+      </div>
+      <div class="section">
+         <div class="section-title">Database</div>
+         <div class="database-row">
+            <label class="database-control">Name <input class="text-input database-name-input" id="databaseNameInput" type="text" value="Database" spellcheck="false"></label>
+            <label class="check-control"><input id="includeCreateDatabaseInput" type="checkbox"> Include CREATE DATABASE in SQL</label>
+         </div>
+      </div>
+      <div class="section">
+         <div class="section-title">Commands</div>
+         <div class="command-row">
+            <div class="command-group">
+               <div class="command-label">Layout</div>
+               <button class="btn layout-danger" id="autoLayoutBtn" type="button">Auto layout</button>
+               <button class="btn" id="alignLeftBtn" type="button">Align left</button>
+               <button class="btn" id="alignTopBtn" type="button">Align top</button>
+               <button class="btn" id="exportLayoutBtn" type="button">Export layout</button>
+               <button class="btn" id="importLayoutBtn" type="button">Import layout</button>
+               <input class="hidden" id="importLayoutFile" type="file" accept="application/json,.json">
+            </div>
+         </div>
+      </div>
+      <div class="section">
+         <div class="section-title">Connector Lines</div>
+         <div class="connector-row">
+            <button class="btn primary" id="autoDetectLinksBtn" type="button">Auto-detect links</button>
+            <button class="btn" id="applyDetectedLinksBtn" type="button" disabled>Apply detected links</button>
+            <label class="check-control"><input id="showLabelsInput" type="checkbox" checked> 1/N labels</label>
+            <label class="check-control"><input id="showArrowsInput" type="checkbox"> Arrow heads</label>
+         </div>
+         <div class="connector-legend">
+            <span><i class="line-sample explicit"></i> Explicit schema link</span>
+            <span><i class="line-sample detected"></i> Detected preview link</span>
+         </div>
+      </div>
+      <div class="section">
+         <div class="section-title">Options</div>
+         <div class="option-row">
+            <label class="layout-control">Gap <input class="number-input" id="layoutGapInput" type="number" min="0" max="300" step="10" value="30"></label>
+            <label class="layout-control">Grid <input class="number-input" id="gridSizeInput" type="number" min="0" max="100" step="5" value="10"></label>
+         </div>
+      </div>
+      <div class="format-header">
+         <div class="tab-group" role="tablist" aria-label="Output format">
+            <button class="tab-btn active" id="iniTabBtn" type="button">INI</button>
+            <button class="tab-btn readonly" id="sqlTabBtn" type="button">SQL</button>
+         </div>
+         <div class="format-note" id="formatNote">INI is editable. SQL is generated output.</div>
+         <button class="btn" id="copyBtn" type="button">Copy</button>
+         <button class="btn" id="exportBtn" type="button">Export</button>
+      </div>
+      <div class="editor-wrap">
+         <textarea class="schema-input" id="schemaInput" spellcheck="false" placeholder="Write schema here..."></textarea>
+         <pre class="sql-output hidden" id="sqlOutput" aria-readonly="true"></pre>
+      </div>
+      <div class="status" id="status">Ready.</div>
+   </aside>
+   <div class="splitter" id="splitter" title="Drag to resize schema input area"></div>
+   <main class="stage" id="stage">
+      <div class="canvas-content" id="canvas">
+         <svg class="links-svg" id="linksSvg">
+            <defs>
+               <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(125, 194, 255, 0.45)"></path>
+               </marker>
+            </defs>
+         </svg>
+         <div class="empty" id="emptyHint">Write an INI schema on the left. Tables are sections. Fields use key[label] = SQL_TYPE OPTIONS [1|N] &gt; target_table.target_field.</div>
+      </div>
+   </main>
+</div>
+<div class="tooltip" id="tooltip"></div>
+<script src="js/lotek-database-schema-visualizer.js" defer></script>
+</body>
+</html>
